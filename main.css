@@ -1,0 +1,423 @@
+@import url("reset.css");
+
+:root{
+    --dark-gray:hsl(0, 0%, 55%);
+    --very-dark-gray:hsl(0, 0%, 41%);
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+
+h1{
+    font-family: "Josefin Sans";
+    font-weight: 300;
+    line-height: normal;
+    text-wrap: balance;
+}
+
+p{
+    font-family: "Alata";
+    font-weight: 400;
+    color:var(--very-dark-gray);
+    font-size: 15px;
+}
+
+/* Styling the header */
+
+header{
+    position: relative;
+}
+
+#hero-image{
+    z-index: -1;
+}
+
+.top-header{
+    padding:2.5rem 1.5rem;
+    width: 100%;
+
+    position: absolute;
+    top:0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:2rem;
+}
+
+.logo{
+    width: 150px;
+    z-index: 2;
+}
+
+/* Adding animation to menu's icons */
+
+.menu{
+    cursor: pointer;
+    position: relative;
+    width: 25px;
+    height: 16px;
+    transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+    z-index: 2;
+}
+
+.menu img{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    transition: opacity 0.2s ease-in-out , visibility 0.2s ease-in-out;
+}
+
+#closing-menu{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.menu.open #menu{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu.open #closing-menu{
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu.open{
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (min-width:45rem) {
+    #logo{
+        width: auto;
+    }
+
+    .top-header{
+        padding:4rem 11.6%;
+    }
+
+    .menu{
+        display: none;
+    }
+}
+
+/* Styling the navigation bar */
+
+.nav-bar{
+    padding:1.5rem;
+    width: 100%;
+    height: 100vh;
+
+    background-color: black;
+    color:white;
+
+    position: fixed;
+    top:0;
+    right:0;
+    transform: translate(100%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:1rem;
+    z-index: 1;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 1s ease-in-out, opacity 0.5s ease, visibility 0s 1s;
+}
+
+/* Styling anchors and giving them animations*/
+
+a{
+    position: relative;
+    width: fit-content;
+    text-decoration: none;
+}
+
+.nav-bar a{
+    font-size: 18px;
+    font-family: "Josefin Sans";
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.footer-nav-bar a{
+    color: white;
+    font-family: "Alata";
+    font-size: 15px;
+}
+
+a::after{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: white;
+
+    position: absolute;
+    bottom: -0.2rem;
+    left:0;
+
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+a:hover::after{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.nav-bar.open{
+    transform: translate(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform 1s ease-in-out, opacity 0.5s ease, visibility 0s;
+}
+
+@media screen and (min-width:45rem) {
+    .nav-bar{
+        padding:0;
+        height: auto;
+        width: auto;
+
+        background-color: transparent;
+        position: initial;
+        transform:none;
+        transition: none;
+        opacity: 1;
+        visibility: visible;
+
+        flex-direction: row;
+        gap:2rem;
+    }
+
+    .nav-bar a{
+        text-transform: none;
+        font-family: "Alata";
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    a::after{
+        bottom:-0.5rem;
+    }
+}
+
+/* Styling the rest on the header */
+
+header h1{
+    margin: 2.5rem 1.5rem;
+    padding:1rem;
+    max-width: 40rem;
+
+    font-size: clamp(42px, 5vw, 90px);
+    color:white;
+    border: 2px solid white;
+
+    position: absolute;
+    top:29%;
+}
+
+@media screen and (min-width:45rem) {
+    header h1{
+        margin:2rem 11.6%;
+        padding:2rem;
+    }
+}
+
+/* Styling the main */
+
+main{
+    padding:7.2rem 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap:5rem;
+}
+
+/* Styling the introduction section */
+
+.introduction-section{
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+
+    position: relative;
+}
+
+.introduction_text{
+    padding:1rem;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap:2rem;
+}
+
+.introduction_text h1{
+    font-size: clamp(32px, 5vw , 47px);
+}
+
+@media screen and (min-width:45rem) {
+    main{
+        padding:6rem 11.6%;
+    }
+
+    .introduction_text{
+        padding:5.5rem 0 0 5.5rem;
+        width: 33rem;
+        background-color: white;
+        text-align: left;
+
+        position: absolute;
+        right:0;
+        bottom: -0.1rem;
+    }
+}
+
+/* Styling the creations section */
+
+.creations-section{
+    display: grid;
+    justify-items: center;
+    row-gap: 2rem;
+}
+
+#creation-section_title{
+    font-size: clamp(35px, 5vw, 45px);
+}
+
+.creation{
+    cursor: pointer;
+    position: relative;
+}
+
+.creation h1{
+    width:8.5rem;
+    color:white;
+    
+    position: absolute;
+    bottom: 1rem;
+    left:1rem;
+}
+
+#the-grid{
+    width: 6rem;
+}
+
+.creation.hover picture{
+    opacity: 0.5;
+}
+
+.creation.hover h1{
+    color:black;
+}
+
+#see-all-button{
+    cursor: pointer;
+    padding:0.5rem 2rem;
+
+    font-size: 15px;
+    font-family: "Alata";
+    letter-spacing: 3px;
+
+    background-color: transparent;
+    border:2px solid black;
+}
+
+#see-all-button:hover{
+    background-color: black;
+    color: white;
+}
+
+@media screen and (min-width:45rem) {
+    .creations-section{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 0.1fr 1fr 1fr;
+        row-gap: 3rem;
+        column-gap: 1.6rem;
+        align-items: center;
+        justify-items: left;
+        grid-template-areas: 
+            'title title button button';
+    }
+
+    #creation-section_title{
+        padding:0;
+        grid-area: title;
+    }
+
+    #see-all-button{
+        grid-area: button;
+        justify-self: right;
+    }
+
+    .creation h1{
+        left:2rem;
+        bottom:2rem;
+    }
+}
+
+/* Styling the footer */
+
+footer{
+    padding:3rem 1.5rem;
+
+    background-color: black;
+
+    display: grid;
+    justify-items: center;
+    gap:1.5rem;
+}
+
+.footer-nav-bar{
+    padding:1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+}
+
+.footer-nav-bar a{
+    opacity: 0.9;
+}
+
+.social-links{
+    display: flex;
+    align-items: center;
+    gap:1.2rem;
+}
+
+@media screen and (min-width:45rem) {
+    footer{
+        padding:3rem 11.6%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            'logo socials'
+            'nav copyright';
+    }
+
+    footer .logo{
+        justify-self: left;
+    }
+
+    .footer-nav-bar{
+        grid-area: nav;
+        justify-self: left;
+
+        padding:0;
+        flex-direction: row;
+        gap:2rem;
+    }
+
+    .social-links,#copyright-text{
+        justify-self: right;
+    }
+}
